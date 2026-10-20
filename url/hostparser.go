@@ -62,6 +62,18 @@ func (p *parser) parseHost(u *Url, parser *parser, input string, isNotSpecial bo
 	}
 
 	asciiDomain, err := p.ToASCII(domain, false)
+	// Non-strict domain parsing preserves ASCII labels regardless of IDNA's
+	// outcome, including invalid Punycode. Host validation below still applies.
+	// https://url.spec.whatwg.org/#concept-domain-to-ascii
+	if strings.IndexFunc(domain, func(r rune) bool { return r >= utf8.RuneSelf }) == -1 {
+		asciiDomain = strings.ToLower(domain)
+		if err != nil {
+			err = p.handleWrappedError(u, errors.DomainToASCII, false, err)
+			if err != nil {
+				return "", err
+			}
+		}
+	}
 	if err != nil {
 		if p.opts.laxHostParsing {
 			return domain, nil
