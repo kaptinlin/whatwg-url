@@ -18,7 +18,6 @@ package url
 
 import (
 	"encoding/json"
-	"io"
 	"os"
 	"strconv"
 	"testing"
@@ -46,12 +45,10 @@ type setterTestCollection struct {
 func TestUrl_SetProtocol(t *testing.T) {
 	var tests setterTestCollection
 
-	jsonFile, err := os.Open("../testdata/setters_tests.json")
+	data, err := os.ReadFile("../testdata/setters_tests.json")
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	var testNum int
@@ -75,12 +72,10 @@ func TestUrl_SetProtocol(t *testing.T) {
 func TestUrl_SetUsername(t *testing.T) {
 	var tests setterTestCollection
 
-	jsonFile, err := os.Open("../testdata/setters_tests.json")
+	data, err := os.ReadFile("../testdata/setters_tests.json")
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	var testNum int
@@ -99,12 +94,10 @@ func TestUrl_SetUsername(t *testing.T) {
 func TestUrl_SetPassword(t *testing.T) {
 	var tests setterTestCollection
 
-	jsonFile, err := os.Open("../testdata/setters_tests.json")
+	data, err := os.ReadFile("../testdata/setters_tests.json")
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	var testNum int
@@ -123,12 +116,10 @@ func TestUrl_SetPassword(t *testing.T) {
 func TestUrl_SetHost(t *testing.T) {
 	var tests setterTestCollection
 
-	jsonFile, err := os.Open("../testdata/setters_tests.json")
+	data, err := os.ReadFile("../testdata/setters_tests.json")
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	var testNum int
@@ -147,12 +138,10 @@ func TestUrl_SetHost(t *testing.T) {
 func TestUrl_SetHostname(t *testing.T) {
 	var tests setterTestCollection
 
-	jsonFile, err := os.Open("../testdata/setters_tests.json")
+	data, err := os.ReadFile("../testdata/setters_tests.json")
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	var testNum int
@@ -171,12 +160,10 @@ func TestUrl_SetHostname(t *testing.T) {
 func TestUrl_SetPort(t *testing.T) {
 	var tests setterTestCollection
 
-	jsonFile, err := os.Open("../testdata/setters_tests.json")
+	data, err := os.ReadFile("../testdata/setters_tests.json")
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	var testNum int
@@ -195,12 +182,10 @@ func TestUrl_SetPort(t *testing.T) {
 func TestUrl_SetPathname(t *testing.T) {
 	var tests setterTestCollection
 
-	jsonFile, err := os.Open("../testdata/setters_tests.json")
+	data, err := os.ReadFile("../testdata/setters_tests.json")
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	var testNum int
@@ -219,12 +204,10 @@ func TestUrl_SetPathname(t *testing.T) {
 func TestUrl_SetSearch(t *testing.T) {
 	var tests setterTestCollection
 
-	jsonFile, err := os.Open("../testdata/setters_tests.json")
+	data, err := os.ReadFile("../testdata/setters_tests.json")
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	var testNum int
@@ -243,12 +226,10 @@ func TestUrl_SetSearch(t *testing.T) {
 func TestUrl_SetHash(t *testing.T) {
 	var tests setterTestCollection
 
-	jsonFile, err := os.Open("../testdata/setters_tests.json")
+	data, err := os.ReadFile("../testdata/setters_tests.json")
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	var testNum int

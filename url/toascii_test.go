@@ -3,7 +3,6 @@ package url
 import (
 	"encoding/json"
 	"fmt"
-	"io"
 	"os"
 	"testing"
 )
@@ -19,12 +18,10 @@ func TestToASCII(t *testing.T) {
 
 	var tests []args
 
-	jsonFile, err := os.Open("../testdata/toascii.json")
+	data, err := os.ReadFile("../testdata/toascii.json")
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	empty := args{}
@@ -67,12 +64,10 @@ func TestIdnaV2(t *testing.T) {
 
 	var tests []args
 
-	jsonFile, err := os.Open("../testdata/IdnaTestV2.json")
+	data, err := os.ReadFile("../testdata/IdnaTestV2.json")
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	empty := args{}

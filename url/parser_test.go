@@ -19,7 +19,6 @@ package url
 import (
 	"encoding/json"
 	"fmt"
-	"io"
 	"os"
 	"strconv"
 	"strings"
@@ -46,12 +45,10 @@ func TestParse(t *testing.T) {
 
 	var tests []args
 
-	jsonFile, err := os.Open("../testdata/urltestdata.json")
+	data, err := os.ReadFile("../testdata/urltestdata.json")
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	empty := args{}
@@ -151,12 +148,10 @@ func BenchmarkParse(b *testing.B) {
 
 	var tests []args
 
-	jsonFile, err := os.Open("../testdata/urltestdata.json")
+	data, err := os.ReadFile("../testdata/urltestdata.json")
 	if err != nil {
-		b.Error(err)
+		b.Fatal(err)
 	}
-	defer jsonFile.Close()
-	data, _ := io.ReadAll(jsonFile)
 	_ = json.Unmarshal(data, &tests)
 
 	empty := args{}

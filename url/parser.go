@@ -411,9 +411,10 @@ func (p *parser) BasicParser(urlOrRef string, baseUrl *Url, url *Url, stateOverr
 					}
 				}
 			} else {
-				if r == '[' {
+				switch r {
+				case '[':
 					bracketFlag = true
-				} else if r == ']' {
+				case ']':
 					bracketFlag = false
 				}
 				if input.currentIsInvalid() && p.opts.acceptInvalidCodepoints {
@@ -601,10 +602,11 @@ func (p *parser) BasicParser(urlOrRef string, baseUrl *Url, url *Url, stateOverr
 					}
 				}
 				buffer.Reset()
-				if r == '?' {
+				switch r {
+				case '?':
 					url.query = new(string)
 					state = StateQuery
-				} else if r == '#' {
+				case '#':
 					url.fragment = new(string)
 					state = StateFragment
 				}
